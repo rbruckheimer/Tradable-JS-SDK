@@ -2,7 +2,7 @@
   "name": "tradable-embed",
   "version": "1.11.0",
   "description": "Lightweight wrapper of the Tradable Embed API that will make the integration with Tradable Embed API really easy.",
-  "main": "tradable-embed.js",
+  "main": "dist/tradable-embed.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

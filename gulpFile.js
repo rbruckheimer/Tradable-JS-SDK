@@ -16,7 +16,7 @@ gulp.task('cleanDist', function () {
 });
 
 gulp.task('minify-js', ['cleanDist'], function() {
-  return gulp.src('tradable*.js')
+  return gulp.src('src/tradable*.js')
     .pipe(uglify({preserveComments: 'some'})) // keeps comments with @license
 	  .pipe(rename(function (path) {
             if(path.extname === '.js') {
@@ -28,7 +28,7 @@ gulp.task('minify-js', ['cleanDist'], function() {
 
 
 gulp.task('copy-files', ['minify-js'], function() {
-  return gulp.src(['tradable*.js'])
+  return gulp.src(['src/tradable*.js'])
 	.pipe(gulp.dest('dist'));
 });
 
@@ -45,7 +45,7 @@ gulp.task('replace-version', ['compress-copy'], function(){
 /***** Docs generation  *****/
 
 gulp.task('docs', ['replace-version'], function() {
-	return gulp.src(['tradable-embed.js'], {base: '.'})
+	return gulp.src(['src/tradable-embed.js'], {base: '.'})
     .pipe(gulpDoxx({
       title: 'tradable-embed ' + versionNumber,
     urlPrefix: ''
