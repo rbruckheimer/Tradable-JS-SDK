@@ -1,5 +1,7 @@
 /******  Copyright 2016 Tradable ApS; @Licensed MIT; v1.11  ******/
-var trEmbJQ = jQuery.noConflict(true);
+
+// Save jQuery in custom variable
+window.trEmbJQ = jQuery.noConflict(true);
 
 // Avoid console errors when not supported
 if (typeof console === "undefined" || typeof console.log === "undefined") 

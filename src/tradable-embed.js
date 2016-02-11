@@ -1,4 +1,6 @@
-var trEmbJQ = jQuery.noConflict(true);
+
+// Save jQuery in custom variable
+window.trEmbJQ = jQuery.noConflict(true);
 
 // Avoid console errors when not supported
 if (typeof console === "undefined" || typeof console.log === "undefined") 
