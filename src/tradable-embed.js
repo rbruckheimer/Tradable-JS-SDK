@@ -12,12 +12,16 @@ window.tradableEmbed = (function($){
     'use strict';
 
      /**
-	 * Welcome to the tradable-embed documentation. Tradable Embed is an open API to easily build financial trading features into any app, through any brokerage. This is the documentation for the tradable-embed javascript SDK, which is split into 2 components:
-	 * <ul><li><b>tradable-embed</b>: Lightweight wrapper of the Tradable Embed API that will make the integration with Tradable Embed API really easy.</li><li><b>tradable-embed-ui</b>: See <a href='http://tradable.github.io/js/docs/tradable-embed-ui.js.html'>here</a> (optional)</li></ul>
+     * Welcome to the tradable-embed documentation. Tradable Embed is an open API to easily build financial trading features into any app, through any brokerage. This is the documentation for the tradable-embed javascript SDK, which offers 2 kits:
+	 * <ul><li><b>core</b>: Lightweight wrapper of the Tradable Embed API that will make the integration with Tradable Embed API really easy.</li><li><b>ui-kit</b>: See <a href='http://tradable.github.io/js/docs/tradable-embed-ui.js.html'>here</a> (optional)</li></ul>
 	 *
-	 * In order to use tradable-embed include the following scripts in your site (we use jQuery in no coflict mode and we assign it to the variable 'trEmbJQ'):
+	 * In order to use the tradable-embed core, you need to include the following scripts in your site. We use jQuery in no coflict mode (<a href="https://api.jquery.com/jquery.noconflict/">what?</a>) and we assign it to the variable 'trEmbJQ':
 	 * <pre>&lt;script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"&gt;&lt;/script&gt;
-     * &lt;script type="text/javascript" id="tradable-embed" src="//js-api.tradable.com/1.2/tradable-embed.min.js" data-app-id="{your_app_id}"&gt;&lt;/script&gt;</pre>
+     * &lt;script type="text/javascript" id="tradable-embed" src="//js-api.tradable.com/core/trEmbDevVersionX/tradable-embed.min.js" data-app-id="{your_app_id}" <i>data-redirect-uri="optional-custom-redirect-uri"</i>&gt;&lt;/script&gt;</pre>
+     * Alternatively, you can require our <a href="https://www.npmjs.com/package/tradable-embed">npm module</a>
+     * <pre>npm install tradable-embed</pre>
+     * If you do, you will have to define the tradableEmbedConfig object before requiring the module:
+     * <pre>window.tradableEmbedConfig = {"appId": <i>your-app-id</i>, <i>"redirectURI": "optional-custom-redirect-uri"</i>};<br>require("tradable-embed")</pre>
      * <b>NOTE! The oauth flow doesn't work properly in this documentation site for the codepen examples, for the best experience please see the examples on Codepen.io, you can do that clicking on the "Edit on Codepen" link</b>
 	 *//**/
     

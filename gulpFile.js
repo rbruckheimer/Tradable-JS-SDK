@@ -45,7 +45,7 @@ gulp.task('replace-version', ['compress-copy'], function(){
 /***** Docs generation  *****/
 
 gulp.task('docs', ['replace-version'], function() {
-	return gulp.src(['src/tradable-embed.js'], {base: '.'})
+	return gulp.src(['dist/tradable-embed.js'], {base: '.'})
     .pipe(gulpDoxx({
       title: 'tradable-embed ' + versionNumber,
     urlPrefix: ''
@@ -62,13 +62,23 @@ gulp.task('replaceDocsCss', ['docs'], function(){
 		.pipe(replace('</style>', '.bs-docs-sidenav > li > a{border: 0; border-bottom: 1px solid #e5e5e5} li {line-height: 17px;}.bs-docs-sidenav i {width: 3px; height:3px}</style>'))
 		.pipe(replace('break-word', 'normal; white-space: nowrap;'))
 		.pipe(replace('table-striped', 'table-striped table-condensed'))
+        .pipe(replace('dist/', ''))
 		.pipe(replace(new RegExp(/(#)\w+(ForAccount")/g), '#smthingForAccount" class="smthingForAccount"'))
 		.pipe(replace('jsFiddle', 'Example'))
 		.pipe(replace('http:', ''))
 		.pipe(gulp.dest('docs'));
 });
 
-gulp.task('generateDocs', ['docs', 'replaceDocsCss']);
+gulp.task('copy-docs', ['replaceDocsCss'], function() {
+  return gulp.src(['docs/dist/**'])
+    .pipe(gulp.dest('docs'));
+});
+
+gulp.task('clean-docs', ['copy-docs'], function () {
+    return gulp.src('docs/dist', {read: false}).pipe(clean());
+});
+
+gulp.task('generateDocs', ['docs', 'replaceDocsCss', 'copy-docs', 'clean-docs']);
 
 
 gulp.task('license-embed', ['generateDocs'], function () {
