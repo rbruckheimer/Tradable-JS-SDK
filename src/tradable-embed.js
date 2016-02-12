@@ -1148,8 +1148,6 @@
     };
     
     initializeLibrary();
-	
-    return tradableEmbed;
 
     function initializeLibrary(){
         var success = false;
